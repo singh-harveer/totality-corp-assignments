@@ -18,13 +18,13 @@
 
 
 ## curl:
-    POST curl -d '[1,2,3,4,5]' http://localhost:8080/users
-    GET curl  http://localhost:8080/users/1
+    curl -d '[1,2,3,4,5]' http://localhost:8080/users
+    curl  http://localhost:8080/users/1
 
 
 
-Alternatively You can localy run the application using `go run server.go`.
+Alternatively You can localy run the application using `go run server.go` and try:
 
-    POST:  curl -d '[1,2,3,4,5]' http://localhost:8000/users
-    GET:  curl  http://localhost:8000/users/1
+    curl -d '[1,2,3,4,5]' http://localhost:8000/users
+    curl  http://localhost:8000/users/1
 
