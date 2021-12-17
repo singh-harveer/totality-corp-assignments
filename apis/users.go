@@ -4,7 +4,6 @@ import (
 	"errors"
 	"net/http"
 	"strconv"
-	"totality/users/client"
 	"totality/users/totality"
 
 	"github.com/gin-gonic/gin"
@@ -16,7 +15,7 @@ const (
 )
 
 type Handler struct {
-	client *client.Client
+	client totality.UserManager
 }
 
 func (h *Handler) GetUserByID(c *gin.Context) {
@@ -62,7 +61,7 @@ func (h *Handler) GetUsers(c *gin.Context) {
 	c.JSON(http.StatusOK, users)
 }
 
-func NewHandler(c *client.Client) *Handler {
+func NewHandler(c totality.UserManager) *Handler {
 	return &Handler{
 		client: c,
 	}

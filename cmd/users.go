@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	var userClient, err = client.NewUserClient(context.Background(), 9001, "localhost")
+	var userClient, err = client.NewUserClient(context.Background(), ":9001")
 	if err != nil {
 		log.Fatalf("failed to create client :%v", err)
 	}

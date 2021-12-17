@@ -1,10 +1,9 @@
 package files_test
 
 import (
+	"errors"
 	"testing"
 	"totality/users/internal/files"
-
-	"github.com/google/go-cmp/cmp"
 )
 
 func TestReadFromFile(t *testing.T) {
@@ -13,20 +12,20 @@ func TestReadFromFile(t *testing.T) {
 	var testcases = []struct {
 		name string
 		in   string
-		want []byte
 		err  error
 	}{
 		{
 			name: "Ok",
 			in:   "testdata/valid.json",
-			want: []byte(`{
-				"id": 1,
-				"name": "Steve",
-				"city": "LA",
-				"phone": 9999999,
-				"height": 5.10,
-				"married": true
-			}`),
+		},
+		{
+			name: "empty/Ok",
+			in:   "testdata/empty.json",
+		},
+		{
+			name: "incorrect/FilePath",
+			in:   "incorrect/file/path.json",
+			err:  errors.New("no such file or directory"),
 		},
 	}
 
@@ -40,8 +39,13 @@ func TestReadFromFile(t *testing.T) {
 				t.Fatalf("got %v want %v", err, tc.err)
 			}
 
-			if !cmp.Equal(got, tc.want) {
-				t.Fatalf("got %v, want %v", got, tc.want)
+			if tc.err != nil {
+				// If error is expected,then skip further test cases validation.
+				return
+			}
+
+			if len(got) <= 0 {
+				t.Fatalf("failed to read data from file")
 			}
 		})
 	}

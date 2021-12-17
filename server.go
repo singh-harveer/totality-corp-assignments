@@ -21,12 +21,11 @@ import (
 
 const (
 	portGRPC = 9001
-	host     = "localhost"
 	apiPort  = 8000
 )
 
 func main() {
-	var addr = fmt.Sprintf("%s:%d", host, portGRPC)
+	var addr = fmt.Sprintf(":%d", portGRPC)
 	log.Println("starting grpc service")
 
 	var listen, err = net.Listen("tcp", addr)
@@ -53,20 +52,20 @@ func main() {
 		}
 	}()
 
-	var grpcClient *client.Client
-	grpcClient, err = client.NewUserClient(context.Background(), portGRPC, host)
+	var userManagerClient totality.UserManager
+	userManagerClient, err = client.NewUserClient(context.Background(), addr)
 	if err != nil {
 		log.Fatalf("failed to create grpc client: %v", err)
 	}
 
-	var handler = apis.NewHandler(grpcClient)
+	var handler = apis.NewHandler(userManagerClient)
 
 	var router = gin.Default()
 	router.GET("/users/:id", handler.GetUserByID)
 
 	router.POST("/users", handler.GetUsers)
 
-	var apiAddr = fmt.Sprintf("%s:%d", host, apiPort)
+	var apiAddr = fmt.Sprintf(":%d", apiPort)
 
 	var srv = &http.Server{
 		Addr:    apiAddr,

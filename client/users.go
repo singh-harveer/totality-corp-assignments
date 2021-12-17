@@ -2,7 +2,6 @@ package client
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"totality/users/totality"
 	"totality/users/userpb"
@@ -56,8 +55,8 @@ func (c *Client) GetUsers(ctx context.Context, ids []int64) ([]totality.User, er
 }
 
 // NewUserClient creates new User grpc service client.
-func NewUserClient(ctx context.Context, port int, host string) (*Client, error) {
-	var conn, err = grpc.Dial(fmt.Sprintf("%s:%d", host, port), grpc.WithInsecure())
+func NewUserClient(ctx context.Context, addr string) (totality.UserManager, error) {
+	var conn, err = grpc.Dial(addr, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}

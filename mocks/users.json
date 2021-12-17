@@ -1,0 +1,41 @@
+[{
+        "id": 1,
+        "name": "Steve",
+        "city": "LA",
+        "phone": 9999999,
+        "height": 5.10,
+        "married": true
+    },
+    {
+        "id": 2,
+        "name": "Ram",
+        "city": "LA",
+        "phone": 876587687,
+        "height": 5.10,
+        "married": true
+    },
+    {
+        "id": 3,
+        "name": "Amit",
+        "city": "Delhi",
+        "phone": 3245455545,
+        "height": 5.10,
+        "married": false
+    },
+    {
+        "id": 4,
+        "name": "Harry",
+        "city": "Gurgaon",
+        "phone": 4545654545,
+        "height": 5.10,
+        "married": true
+    },
+    {
+        "id": 5,
+        "name": "Rana",
+        "city": "Noida",
+        "phone": 9999999,
+        "height": 5.10,
+        "married": false
+    }
+]
