@@ -1,10 +1,11 @@
+* Sample users' API using golang, GRPC and gin.
 
 ## Getting started.
 
 * Clone repository and `CD` to project home directory and and build and run docker images using 
     below command:
-    ```docker build -t totality-users .```
-    ```docker run --name totality-users -p 8000:8080 -d totality-users```
+    ```docker build -t users-api .```
+    ```docker run --name users-api -p 8000:8080 -d users-api```
 
 
 ## API endpoints:
