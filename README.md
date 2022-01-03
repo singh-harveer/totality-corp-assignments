@@ -1,4 +1,4 @@
-* Sample users' API using golang, GRPC and gin.
+* Sample users' API using golang, GRPC and GIN
 
 ## Getting started.
 
@@ -6,7 +6,6 @@
     below command:
     ```docker build -t users-api .```
     ```docker run --name users-api -p 8000:8080 -d users-api```
-
 
 ## API endpoints:
     GET /users/{id}
