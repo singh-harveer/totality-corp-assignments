@@ -25,6 +25,7 @@ message GetUsersResponse{
  repeated User users = 1;
 }
 
+// User represent User Object.
 message User{
     int64 id = 1;
     string name = 2;
